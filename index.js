@@ -1,4 +1,4 @@
-console.log("HEllo");
+/*console.log("HEllo");
 let myname;
 console.log(typeof myname);
 myname = "Hamza";
@@ -73,13 +73,13 @@ while (x <= 2) {
 //for in loop
 console.log("Printing courses using For in Loop");
 for (let i in courses) {
-  console.log(courses[i]);
+  console.log(i, courses[i]);
 }
 
 //for of loop
 console.log("Printing courses using For of Loop");
 for (let j of courses) {
-  console.log(courses[j]);
+  console.log(j);
 }
 
 let colors = ["red", "blue", "green"];
@@ -101,3 +101,4 @@ let { pname, dimension, price } = product;
 console.log(
   `name of the product is ${pname}, dimension is ${dimension} and price is ${price}`
 );
+*/
