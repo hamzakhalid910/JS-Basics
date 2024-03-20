@@ -53,7 +53,7 @@ console.log(person1, person2);
 //Objects are mutable.
 
 //Prmises
-
+/*
 p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log("This is promise 1");
@@ -83,3 +83,31 @@ p1.then((value) => {
 p2.catch((error) => {
   console.log("Error catched here");
 });
+*/
+
+//Promises
+
+ItemSold = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    customer = false;
+    payment = false;
+    if (customer === true) {
+      resolve('Item Sold');
+    }
+    else if (payment === true) {
+      resolve('Payment Received');
+    }
+    else {
+      reject("Item was not sold");
+    }
+  }, 5000); // Removed unnecessary comma here
+});
+
+ItemSold.then((message) => {
+  console.log('it is resolved' + message);
+}
+).catch((error => {
+  console.log("This is error in cattch with " + error);
+}))
+
+console.log('I am outside');
