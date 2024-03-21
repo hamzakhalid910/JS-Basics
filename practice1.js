@@ -161,3 +161,5 @@ hello1.apply(student, ["Lahore"]);
 let printHello = hello1.bind(student, "Lahore");
 console.log(printHello);
 printHello();
+
+
