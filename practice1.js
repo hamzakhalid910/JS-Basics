@@ -92,22 +92,72 @@ ItemSold = new Promise((resolve, reject) => {
     customer = false;
     payment = false;
     if (customer === true) {
-      resolve('Item Sold');
-    }
-    else if (payment === true) {
-      resolve('Payment Received');
-    }
-    else {
+      resolve("Item Sold");
+    } else if (payment === true) {
+      resolve("Payment Received");
+    } else {
       reject("Item was not sold");
     }
-  }, 5000); // Removed unnecessary comma here
+  }, 5000);
 });
 
 ItemSold.then((message) => {
-  console.log('it is resolved' + message);
-}
-).catch((error => {
+  console.log("it is resolved" + message);
+}).catch((error) => {
   console.log("This is error in cattch with " + error);
-}))
+});
 
-console.log('I am outside');
+console.log("I am outside");
+
+//Callbacks
+
+function hello(callback) {
+  setTimeout(() => {
+    console.log("Hello Function");
+    callback();
+  }, 2000);
+}
+
+function by() {
+  console.log("Bye");
+}
+
+hello(by);
+
+sum(display, 1, 2);
+
+function sum(callback, a, b) {
+  let result = a + b;
+  callback(result);
+}
+
+function display(result) {
+  console.log(result);
+}
+
+//This keyword
+
+student = {
+  name: "Hamza",
+  class: "BSE",
+  /*hello: function () {
+    console.log(`hello this is ${this.name}`);
+  },*/
+};
+
+let hello1 = function (city) {
+  console.log(`Helle this is ${this.name} from ${city}`);
+};
+
+student2 = {
+  name: "Hammad",
+  class: "BCS",
+};
+
+//Call function
+
+hello1.call(student, "Lahore");
+hello1.apply(student, ["Lahore"]);
+let printHello = hello1.bind(student, "Lahore");
+console.log(printHello);
+printHello();
