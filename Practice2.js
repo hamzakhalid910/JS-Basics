@@ -1,3 +1,4 @@
+/*
 //Number 1
 
 // console.log(array.reduce(sum));
@@ -12,34 +13,87 @@
 // console.log(array);
 // console.log(array.length);
 
-let array = [1, [2, [3, 4], 5]];
+// let a = "11";
+// let b = "12";
+// let result = a.concat(b);
+// console.log(result);
+
+let array = [1, [2, [3, 4], 50]];
+console.log(array.length);
+// console.log(array[1][1]);
+temp = array.toString(array);
+console.log(temp);
+console.log(Number(temp[1]));
+console.log(array.map(Number()));
 
 function FlatenArray(array) {
-    let tempArray = array.toString();
-    console.log(tempArray);
-    console.log(tempArray.length);
-    let finalArray = [];
-    for (let i = 0; i < tempArray.length; i++) {
-        if (tempArray[i] != ',') {
-            finalArray.push(tempArray[i]);
-        }
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "[") {
     }
-    return finalArray;
+  }
+}
+
+
+
+let array = [1, [2, [3, 4], 50]];
+
+function FlatenArray(array) {
+  let tempArray = array.toString();
+  console.log(tempArray);
+  console.log(tempArray.length);
+  let finalArray = [];
+  for (let i = 0; i < tempArray.length; i++) {
+    if (tempArray[i] != ",") {
+      for (let j = i + 1; j < 10; j++) {
+        if (tempArray[j] != ",") {
+          //   console.log(tempArray[i]);
+          console.log(tempArray[j]);
+          //   let concat = tempArray[i].concat(tempArray[j]);
+
+          //   console.log(concat);
+        }
+      }
+
+      finalArray.push(tempArray[i]);
+    }
+  }
+  return finalArray;
 }
 
 console.log(FlatenArray(array));
+*/
+
+//Number 1
+
+let array = [1, [2, [3, 4], 50]];
+let nestedArray = [];
+
+function FlatenArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      console.log(array[i]);
+      FlatenArray(array[i]);
+    } else {
+      console.log("Not array at " + i);
+      nestedArray.push(array[i]);
+    }
+  }
+}
+
+FlatenArray(array);
+console.log(nestedArray);
 
 // Number 2
 
 function hasUniqueCharacters(string) {
-    for (let j = 0; j < string.length; j++) {
-        for (let i = j + 1; i < string.length; i++) {
-            if (string[j] === string[i]) {
-                return false;
-            }
-        }
+  for (let j = 0; j < string.length; j++) {
+    for (let i = j + 1; i < string.length; i++) {
+      if (string[j] === string[i]) {
+        return false;
+      }
     }
-    return true;
+  }
+  return true;
 }
 
 console.log(hasUniqueCharacters("abcdefghijklmnozqrstuvwxyz"));
@@ -47,16 +101,16 @@ console.log(hasUniqueCharacters("abcdefghijklmnozqrstuvwxyz"));
 //Number 3
 
 function isAnagram(word1, word2) {
-    if (word1.length != word2.length) {
-        return false;
+  if (word1.length != word2.length) {
+    return false;
+  }
+  for (let i = 0; i < word1.length; i++) {
+    console.log(word2[i]);
+    if (!word1.includes(word2[i])) {
+      return false;
     }
-    for (let i = 0; i < word1.length; i++) {
-        console.log(word2[i]);
-        if (!word1.includes(word2[i])) {
-            return false;
-        }
-    }
-    return true;
+  }
+  return true;
 }
 
 // let word1 = 'hamza';
@@ -64,6 +118,136 @@ function isAnagram(word1, word2) {
 // console.log(word1[0], word2[0]);
 // console.log(word1.includes(word2[0]));
 
-console.log(isAnagram('listan', 'silent'));
+console.log(isAnagram("listan", "silent"));
 
 //Nummber 4
+
+function isBalancedParentheses(parentheses) {
+  let openParentheses = 0;
+  let closeParentheses = 0;
+  for (let i = 0; i < parentheses.length; i++) {
+    if (parentheses[i] === "(") {
+      openParentheses++;
+      console.log(`Value of open parentheses is ${openParentheses}`);
+    } else if (parentheses[i] === ")") {
+      closeParentheses++;
+      console.log(`Value of close parentheses is ${closeParentheses}`);
+    }
+  }
+  if (openParentheses === closeParentheses) {
+    // console.log(`Value of close parentheses is ${closeParentheses}`);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let parentheses = "()(()";
+// console.log(parentheses);
+// console.log(parentheses[0]);
+// console.log(parentheses[1]);
+// console.log(parentheses.length);
+
+console.log(isBalancedParentheses(parentheses));
+
+// Number 5
+
+function double(a) {
+  return a * 2;
+}
+
+let numbers = [1, 2, 3, 80];
+let doubleNumbers = numbers.map(double);
+console.log(doubleNumbers);
+
+// Number 6
+
+function makeImmutable(object) {
+  console.log(object);
+  Object.freeze(object);
+  return "Object is now Immutable";
+}
+
+let object = {
+  name: "Hamza",
+  class: "BSE",
+};
+
+console.log("Try to change name before freezing function");
+object.name = "Hammad";
+console.log(object);
+
+console.log("Called immutable function");
+console.log(makeImmutable(object));
+console.log("Try to change name after makeImmutable function");
+object.name = "Azaan";
+console.log(object);
+
+//Number 7
+
+let apiData = fetch("https://dummyjson.com/products/1");
+apiData
+  .then((res) => {
+    // console.log(res.status);
+    // console.log(res.ok);
+    if (res.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("UNSUCCESSFUL");
+    }
+    return res.json();
+  })
+  .then((res1) => console.log(res1))
+  .catch((Error) => console.log("Some Error"));
+
+//   Number 8
+
+function delayedGreetings(callback, delay) {
+  setTimeout(() => {
+    // console.log("Delay Greet");
+    console.log(callback());
+  }, delay);
+}
+
+function greet() {
+  return "Greet here";
+}
+delayedGreetings(greet, 2000);
+
+// Number 9
+
+let array1 = [1, 2, 3, 40];
+
+function sumArray() {
+  return array1.reduce(sum);
+}
+
+function sum(a, b) {
+  return a + b;
+}
+
+console.log(sumArray());
+
+// Number 10
+
+let person1 = {
+  name: "Hamza",
+  age: 22,
+  subject: { first: "OOP", second: "DSA" },
+};
+
+// Deep Copy using assign()
+
+// let person2 = Object.assign({}, person1);
+
+// person2.age = 23;
+// person2.subject.first = "C";
+
+//Stringify
+
+function deepCopy(object) {
+  return JSON.parse(JSON.stringify(object));
+}
+
+let person2 = console.log(deepCopy(person1));
+console.log(person1);
