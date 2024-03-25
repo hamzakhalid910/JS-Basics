@@ -1,4 +1,5 @@
-/*
+const work = async () => {
+  /*
 //Number 1
 
 // console.log(array.reduce(sum));
@@ -63,191 +64,199 @@ function FlatenArray(array) {
 console.log(FlatenArray(array));
 */
 
-//Number 1
+  //Number 1
+  console.log("\n\n==========Question 1===============");
 
-let array = [1, [2, [3, 4], 50]];
-let nestedArray = [];
+  let array = [1, [2, [3, 4], 50]];
+  let nestedArray = [];
 
-function FlatenArray(array) {
-  for (let i = 0; i < array.length; i++) {
-    if (Array.isArray(array[i])) {
-      console.log(array[i]);
-      FlatenArray(array[i]);
-    } else {
-      console.log("Not array at " + i);
-      nestedArray.push(array[i]);
-    }
-  }
-}
-
-FlatenArray(array);
-console.log(nestedArray);
-
-// Number 2
-
-function hasUniqueCharacters(string) {
-  for (let j = 0; j < string.length; j++) {
-    for (let i = j + 1; i < string.length; i++) {
-      if (string[j] === string[i]) {
-        return false;
+  function FlatenArray(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        FlatenArray(array[i]);
+      } else {
+        nestedArray.push(array[i]);
       }
     }
   }
-  return true;
-}
 
-console.log(hasUniqueCharacters("abcdefghijklmnozqrstuvwxyz"));
+  FlatenArray(array);
+  console.log(nestedArray);
 
-//Number 3
-
-function isAnagram(word1, word2) {
-  if (word1.length != word2.length) {
-    return false;
+  // Number 2
+  console.log("\n\n==========Question 2===============");
+  function hasUniqueCharacters(string) {
+    for (let j = 0; j < string.length; j++) {
+      for (let i = j + 1; i < string.length; i++) {
+        if (string[j] === string[i]) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
-  for (let i = 0; i < word1.length; i++) {
-    console.log(word2[i]);
-    if (!word1.includes(word2[i])) {
+
+  console.log(hasUniqueCharacters("abcdefghijklmnoqrstuvwxyz"));
+
+  //Number 3
+  console.log("\n\n==========Question 3===============");
+
+  function isAnagram(word1, word2) {
+    if (word1.length != word2.length) {
+      return false;
+    }
+    for (let i = 0; i < word1.length; i++) {
+      console.log(word2[i]);
+      if (!word1.includes(word2[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // let word1 = 'hamza';
+  // let word2 = 'hammad';
+  // console.log(word1[0], word2[0]);
+  // console.log(word1.includes(word2[0]));
+
+  console.log(isAnagram("listeen", "silennt"));
+
+  //Nummber 4
+  console.log("\n\n==========Question 4===============");
+
+  function isBalancedParentheses(parentheses) {
+    let openParentheses = 0;
+    let closeParentheses = 0;
+    for (let i = 0; i < parentheses.length; i++) {
+      if (parentheses[i] === "(") {
+        openParentheses++;
+        console.log(`Value of open parentheses is ${openParentheses}`);
+      } else if (parentheses[i] === ")") {
+        closeParentheses++;
+        console.log(`Value of close parentheses is ${closeParentheses}`);
+      }
+    }
+    if (openParentheses === closeParentheses) {
+      // console.log(`Value of close parentheses is ${closeParentheses}`);
+      return true;
+    } else {
       return false;
     }
   }
-  return true;
-}
 
-// let word1 = 'hamza';
-// let word2 = 'hammad';
-// console.log(word1[0], word2[0]);
-// console.log(word1.includes(word2[0]));
+  let parentheses = "()(()";
+  // console.log(parentheses);
+  // console.log(parentheses[0]);
+  // console.log(parentheses[1]);
+  // console.log(parentheses.length);
 
-console.log(isAnagram("listan", "silent"));
+  console.log(isBalancedParentheses(parentheses));
 
-//Nummber 4
+  // Number 5
+  console.log("\n\n==========Question 5===============");
 
-function isBalancedParentheses(parentheses) {
-  let openParentheses = 0;
-  let closeParentheses = 0;
-  for (let i = 0; i < parentheses.length; i++) {
-    if (parentheses[i] === "(") {
-      openParentheses++;
-      console.log(`Value of open parentheses is ${openParentheses}`);
-    } else if (parentheses[i] === ")") {
-      closeParentheses++;
-      console.log(`Value of close parentheses is ${closeParentheses}`);
-    }
+  const double = (a) => a * 2;
+
+  let numbers = [1, 2, 3, 80];
+  let doubleNumbers = numbers.map((number) => number * 2);
+  console.log(doubleNumbers);
+
+  // Number 6
+  console.log("\n\n==========Question 6===============");
+
+  function makeImmutable(object) {
+    console.log(object);
+    Object.freeze(object);
+    return "Object is now Immutable";
   }
-  if (openParentheses === closeParentheses) {
-    // console.log(`Value of close parentheses is ${closeParentheses}`);
-    return true;
-  } else {
-    return false;
-  }
-}
 
-let parentheses = "()(()";
-// console.log(parentheses);
-// console.log(parentheses[0]);
-// console.log(parentheses[1]);
-// console.log(parentheses.length);
+  let object = {
+    name: "Hamza",
+    class: "BSE",
+  };
 
-console.log(isBalancedParentheses(parentheses));
-
-// Number 5
-
-function double(a) {
-  return a * 2;
-}
-
-let numbers = [1, 2, 3, 80];
-let doubleNumbers = numbers.map(double);
-console.log(doubleNumbers);
-
-// Number 6
-
-function makeImmutable(object) {
+  console.log("Try to change name before freezing function");
+  object.name = "Hammad";
   console.log(object);
-  Object.freeze(object);
-  return "Object is now Immutable";
-}
 
-let object = {
-  name: "Hamza",
-  class: "BSE",
-};
+  console.log("Called immutable function");
+  console.log(makeImmutable(object));
+  console.log("Try to change name after makeImmutable function");
+  object.name = "Azaan";
+  console.log(object);
 
-console.log("Try to change name before freezing function");
-object.name = "Hammad";
-console.log(object);
+  //Number 7
+  console.log("\n\n==========Question 7===============");
 
-console.log("Called immutable function");
-console.log(makeImmutable(object));
-console.log("Try to change name after makeImmutable function");
-object.name = "Azaan";
-console.log(object);
-
-//Number 7
-
-let apiData = fetch("https://dummyjson.com/products/1");
-apiData
-  .then((res) => {
-    // console.log(res.status);
-    // console.log(res.ok);
-    if (res.ok) {
+  const fun = async () => {
+    let apiData = await fetch("https://dummyjson.com/products/1");
+    console.log(apiData.ok);
+    if (apiData.ok) {
       console.log("SUCCESS");
     } else {
       console.log("UNSUCCESSFUL");
     }
-    return res.json();
-  })
-  .then((res1) => console.log(res1))
-  .catch((Error) => console.log("Some Error"));
+  };
 
-//   Number 8
+  await fun();
 
-function delayedGreetings(callback, delay) {
-  setTimeout(() => {
-    // console.log("Delay Greet");
-    console.log(callback());
-  }, delay);
-}
+  //   Number 8
+  console.log("\n\n==========Question 8===============");
 
-function greet() {
-  return "Greet here";
-}
-delayedGreetings(greet, 2000);
+  function delayedGreetings(callback, delay) {
+    setTimeout(() => {
+      // console.log("Delay Greet");
+      console.log(callback());
+    }, delay);
+  }
 
-// Number 9
+  function greet() {
+    return "Greet here";
+  }
+  delayedGreetings(greet, 2000);
 
-let array1 = [1, 2, 3, 40];
+  // Number 9
+  console.log("\n\n==========Question 9===============");
 
-function sumArray() {
-  return array1.reduce(sum);
-}
+  let array1 = [1, 2, 3, 4];
 
-function sum(a, b) {
-  return a + b;
-}
+  function sumArray() {
+    return array1.reduce(sum, {});
+  }
 
-console.log(sumArray());
+  function sum(a, b) {
+    console.log(a);
+    let obj = { sum: (a.sum || 0) + b };
+    console.log("return ", obj);
+    return obj;
+  }
 
-// Number 10
+  console.log(sumArray());
 
-let person1 = {
-  name: "Hamza",
-  age: 22,
-  subject: { first: "OOP", second: "DSA" },
+  // Number 10
+  console.log("\n\n==========Question 10===============");
+
+  let person1 = {
+    name: "Hamza",
+    age: 22,
+    subject: { first: "OOP", second: "DSA" },
+  };
+
+  // Deep Copy using assign()
+
+  // let person2 = Object.assign({}, person1);
+
+  // person2.age = 23;
+  // person2.subject.first = "C";
+
+  //Stringify
+
+  function deepCopy(object) {
+    return JSON.parse(JSON.stringify(object));
+  }
+
+  let person2 = console.log(deepCopy(person1));
+  console.log(person1);
 };
 
-// Deep Copy using assign()
-
-// let person2 = Object.assign({}, person1);
-
-// person2.age = 23;
-// person2.subject.first = "C";
-
-//Stringify
-
-function deepCopy(object) {
-  return JSON.parse(JSON.stringify(object));
-}
-
-let person2 = console.log(deepCopy(person1));
-console.log(person1);
+work();
